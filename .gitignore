@@ -1,0 +1,8 @@
+*.sql
+*.log
+*~
+*.swp
+*.swo
+*.pyc
+api/settings/local.py
+api/settings/local
