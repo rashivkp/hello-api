@@ -20,3 +20,12 @@ DATABASES = {
     }
 }
 
+CONSUMER = {
+    'cosumer_key': '',
+    'consumer_secret': '',
+    'name': 'bitbucket',
+    'request_token_url': 'https://bitbucket.org/api/1.0/oauth/request_token/',
+    'access_token_url': 'https://bitbucket.org/api/1.0/oauth/access_token/',
+    'authorize_url': 'https://bitbucket.org/api/1.0/oauth/authenticate/',
+    'base_url': 'https://bitbucket.org/api/1.0/'
+}

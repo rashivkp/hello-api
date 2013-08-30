@@ -106,6 +106,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'api.apps.consumer',
+    'rauth'
 )
 
 # A sample logging configuration. The only tangible logging
