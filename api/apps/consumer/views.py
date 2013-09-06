@@ -50,6 +50,6 @@ def get_token(request):
         url = 'https://api.bitbucket.org/1.0/repositories/%s/%s/branches' % (username, repo_slug)
         resp = session.get(url)
         return HttpResponse(resp.json())
-    else
+    else:
         return HttpResponseRedirect('/')
 

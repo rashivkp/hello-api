@@ -1,7 +1,7 @@
 import os
 import logging
 import httplib2
-
+from django.conf import settings
 from apiclient.discovery import build
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
@@ -11,7 +11,6 @@ from django.http import HttpResponseBadRequest
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from api.apps.calendar.models import CredentialsModel
-from api import settings
 from oauth2client import xsrfutil
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.django_orm import Storage

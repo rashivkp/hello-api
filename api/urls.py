@@ -18,7 +18,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^test/$', 'api.apps.consumer.views.access', name='access'),
     url(r'^get/', 'api.apps.consumer.views.get_token', name='get_token'),
-    url(r'^getold/', 'api.apps.consumer.views.get_token_old', name='get_token_old'),
     url(r'^$', 'api.apps.calendar.views.index', name='home'),
     url(r'^oauth2callback', 'api.apps.calendar.views.auth_return', name='callback'),
 
