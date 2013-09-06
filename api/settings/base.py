@@ -1,6 +1,9 @@
 """Base settings shared by all environments"""
 # Import global settings to make it easier to extend settings.
 from django.conf.global_settings import *   # pylint: disable=W0614,W0401
+import os
+import api as project_module
+PROJECT_DIR = os.path.dirname(os.path.realpath(project_module.__file__))
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
@@ -89,6 +92,7 @@ ROOT_URLCONF = 'api.urls'
 WSGI_APPLICATION = 'api.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(PROJECT_DIR, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -106,7 +110,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'api.apps.consumer',
-    'rauth'
+    'api.apps.calendar',
+    'rauth',
 )
 
 # A sample logging configuration. The only tangible logging
