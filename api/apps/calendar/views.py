@@ -23,7 +23,7 @@ CLIENT_SECRETS = os.path.join(os.path.dirname(__file__), '../../settings/local/'
 
 FLOW = flow_from_clientsecrets(
     CLIENT_SECRETS,
-    scope='https://www.googleapis.com/auth/plus.me',
+    scope='https://www.googleapis.com/auth/calendar',
     redirect_uri='http://localhost:8000/oauth2callback')
 
 
@@ -39,14 +39,16 @@ def index(request):
   else:
     http = httplib2.Http()
     http = credential.authorize(http)
-    service = build("plus", "v1", http=http)
-    activities = service.activities()
-    activitylist = activities.list(collection='public',
-                                   userId='me').execute()
-    logging.info(activitylist)
-    return render_to_response('calendar/welcome.html', {
-        'activitylist': activitylist,
-        })
+    service = build(serviceName='calendar', version='v3', http=http)
+    calendar_list_entry = service.calendarList().get(calendarId='m34oqodtv10qvks0ntm43o0b10@group.calendar.google.com').execute()
+    return HttpResponse(calendar_list_entry['summary'])
+    #service = build("plus", "v1", http=http)
+    #activities = service.activities()
+    #activitylist = activities.list(collection='public', userId='me').execute()
+    #logging.info(activitylist)
+    #return render_to_response('calendar/welcome.html', {
+    #    'activitylist': activitylist,
+    #    })
 
 @login_required
 def auth_return(request):
