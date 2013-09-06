@@ -40,8 +40,10 @@ def index(request):
     http = httplib2.Http()
     http = credential.authorize(http)
     service = build(serviceName='calendar', version='v3', http=http)
-    calendar_list_entry = service.calendarList().get(calendarId='m34oqodtv10qvks0ntm43o0b10@group.calendar.google.com').execute()
-    return HttpResponse(calendar_list_entry['summary'])
+    #calendar_list_entry = service.events().get(calendarId='m34oqodtv10qvks0ntm43o0b10@group.calendar.google.com').execute()
+    page_token = None
+    events = service.events().list(calendarId='m34oqodtv10qvks0ntm43o0b10@group.calendar.google.com', pageToken=page_token).execute()
+    return render_to_response('calendar/list_events.html',{ 'items': events['items'] })
     #service = build("plus", "v1", http=http)
     #activities = service.activities()
     #activitylist = activities.list(collection='public', userId='me').execute()
