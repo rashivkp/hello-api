@@ -61,3 +61,6 @@ def auth_return(request):
   storage = Storage(CredentialsModel, 'id', request.user, 'credential')
   storage.put(credential)
   return HttpResponseRedirect("/")
+
+def js(request):
+    return render_to_response('calendar/js_list_events.html')

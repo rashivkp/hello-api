@@ -19,13 +19,14 @@ urlpatterns = patterns('',
     url(r'^test/$', 'api.apps.consumer.views.access', name='access'),
     url(r'^get/', 'api.apps.consumer.views.get_token', name='get_token'),
     url(r'^$', 'api.apps.calendar.views.index', name='home'),
+    url(r'^js$', 'api.apps.calendar.views.js', name='js'),
     url(r'^oauth2callback', 'api.apps.calendar.views.auth_return', name='callback'),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs'
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="login"),
-    #url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'calendar/login.html', 'form': AuthenticationForm}),
+    #url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="login"),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'calendar/login.html'}),
 
 )
